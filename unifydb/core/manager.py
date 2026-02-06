@@ -1,5 +1,5 @@
 """
-Database Manager - Main entry point for UnifyDB.
+Database Manager - Main entry point for OneDB.
 Auto-detects database type and creates appropriate adapter.
 """
 
@@ -121,7 +121,7 @@ class Database:
         )
         
         # Using specific adapter
-        from unifydb import PostgreSQL
+        from onedb import PostgreSQL
         db = PostgreSQL(host="localhost", database="mydb")
     """
     
@@ -283,21 +283,21 @@ class Database:
         """Load adapter class."""
         # Import mapping
         import_map = {
-            "postgresql": ("unifydb.adapters.postgresql", "PostgreSQL"),
-            "mysql": ("unifydb.adapters.mysql", "MySQL"),
-            "mariadb": ("unifydb.adapters.mariadb", "MariaDB"),
-            "sqlite": ("unifydb.adapters.sqlite", "SQLite"),
-            "mongodb": ("unifydb.adapters.mongodb", "MongoDB"),
-            "redis": ("unifydb.adapters.redis_db", "Redis"),
-            "mssql": ("unifydb.adapters.mssql", "MSSQL"),
-            "oracle": ("unifydb.adapters.oracle", "Oracle"),
-            "elasticsearch": ("unifydb.adapters.elasticsearch_db", "Elasticsearch"),
-            "cassandra": ("unifydb.adapters.cassandra_db", "Cassandra"),
-            "dynamodb": ("unifydb.adapters.dynamodb", "DynamoDB"),
-            "snowflake": ("unifydb.adapters.snowflake_db", "Snowflake"),
-            "bigquery": ("unifydb.adapters.bigquery", "BigQuery"),
-            "neo4j": ("unifydb.adapters.neo4j_db", "Neo4j"),
-            "db2": ("unifydb.adapters.db2", "DB2"),
+            "postgresql": ("onedb.adapters.postgresql", "PostgreSQL"),
+            "mysql": ("onedb.adapters.mysql", "MySQL"),
+            "mariadb": ("onedb.adapters.mariadb", "MariaDB"),
+            "sqlite": ("onedb.adapters.sqlite", "SQLite"),
+            "mongodb": ("onedb.adapters.mongodb", "MongoDB"),
+            "redis": ("onedb.adapters.redis_db", "Redis"),
+            "mssql": ("onedb.adapters.mssql", "MSSQL"),
+            "oracle": ("onedb.adapters.oracle", "Oracle"),
+            "elasticsearch": ("onedb.adapters.elasticsearch_db", "Elasticsearch"),
+            "cassandra": ("onedb.adapters.cassandra_db", "Cassandra"),
+            "dynamodb": ("onedb.adapters.dynamodb", "DynamoDB"),
+            "snowflake": ("onedb.adapters.snowflake_db", "Snowflake"),
+            "bigquery": ("onedb.adapters.bigquery", "BigQuery"),
+            "neo4j": ("onedb.adapters.neo4j_db", "Neo4j"),
+            "db2": ("onedb.adapters.db2", "DB2"),
         }
         
         if name not in import_map:
@@ -312,23 +312,23 @@ class Database:
         except ImportError as e:
             # Determine install command
             install_cmds = {
-                "postgresql": "pip install unifydb[postgresql]",
-                "mysql": "pip install unifydb[mysql]",
-                "mongodb": "pip install unifydb[mongodb]",
-                "redis": "pip install unifydb[redis]",
-                "oracle": "pip install unifydb[oracle]",
-                "mssql": "pip install unifydb[mssql]",
-                "elasticsearch": "pip install unifydb[elasticsearch]",
-                "cassandra": "pip install unifydb[cassandra]",
-                "dynamodb": "pip install unifydb[dynamodb]",
-                "snowflake": "pip install unifydb[snowflake]",
-                "bigquery": "pip install unifydb[bigquery]",
-                "neo4j": "pip install unifydb[neo4j]",
-                "db2": "pip install unifydb[db2]",
+                "postgresql": "pip install onedb[postgresql]",
+                "mysql": "pip install onedb[mysql]",
+                "mongodb": "pip install onedb[mongodb]",
+                "redis": "pip install onedb[redis]",
+                "oracle": "pip install onedb[oracle]",
+                "mssql": "pip install onedb[mssql]",
+                "elasticsearch": "pip install onedb[elasticsearch]",
+                "cassandra": "pip install onedb[cassandra]",
+                "dynamodb": "pip install onedb[dynamodb]",
+                "snowflake": "pip install onedb[snowflake]",
+                "bigquery": "pip install onedb[bigquery]",
+                "neo4j": "pip install onedb[neo4j]",
+                "db2": "pip install onedb[db2]",
             }
             raise DriverNotInstalledError(
                 name, 
-                install_cmds.get(name, f"pip install unifydb[{name}]")
+                install_cmds.get(name, f"pip install onedb[{name}]")
             ) from e
     
     @classmethod
