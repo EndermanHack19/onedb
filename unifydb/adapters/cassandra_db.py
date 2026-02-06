@@ -14,12 +14,12 @@ class Cassandra(BaseAdapter):
     Apache Cassandra adapter.
     
     Install:
-        pip install unifydb[cassandra]
+        pip install onedb[cassandra]
     """
     
     db_type = DatabaseType.CASSANDRA
     driver_name = "cassandra-driver"
-    install_command = "pip install unifydb[cassandra]"
+    install_command = "pip install onedb[cassandra]"
     
     def __init__(self, config: Optional[ConnectionConfig] = None, **kwargs):
         super().__init__(config, **kwargs)
