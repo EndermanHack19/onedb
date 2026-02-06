@@ -1,7 +1,3 @@
-"""
-UnifyDB - Setup Script
-For backwards compatibility with older pip versions.
-"""
 
 from setuptools import setup
 
