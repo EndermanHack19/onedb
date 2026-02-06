@@ -13,7 +13,7 @@ from contextlib import contextmanager, asynccontextmanager
 from enum import Enum
 import logging
 
-logger = logging.getLogger("unifydb")
+logger = logging.getLogger("onedb")
 
 T = TypeVar("T")
 
