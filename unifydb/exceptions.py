@@ -1,21 +1,7 @@
-"""
-UnifyDB Exception Classes.
-
-Hierarchy:
-    UnifyDBError
-    ├── ConnectionError
-    ├── QueryError
-    ├── AdapterNotFoundError
-    ├── DriverNotInstalledError
-    ├── ValidationError
-    └── TransactionError
-"""
-
 from typing import Optional, Any
 
 
-class UnifyDBError(Exception):
-    """Base exception for all UnifyDB errors."""
+class OneDBError(Exception):
     
     def __init__(
         self, 
@@ -43,7 +29,7 @@ class UnifyDBError(Exception):
         }
 
 
-class ConnectionError(UnifyDBError):
+class ConnectionError(OneDBError):
     """Failed to connect to database."""
     
     def __init__(
@@ -58,7 +44,7 @@ class ConnectionError(UnifyDBError):
         super().__init__(message, code="CONN_ERR", details=details, **kwargs)
 
 
-class QueryError(UnifyDBError):
+class QueryError(OneDBError):
     """Error executing query."""
     
     def __init__(
@@ -72,7 +58,7 @@ class QueryError(UnifyDBError):
         super().__init__(message, code="QUERY_ERR", details=details, **kwargs)
 
 
-class AdapterNotFoundError(UnifyDBError):
+class AdapterNotFoundError(OneDBError):
     """Requested adapter not found."""
     
     def __init__(self, adapter_name: str, **kwargs):
@@ -80,7 +66,7 @@ class AdapterNotFoundError(UnifyDBError):
         super().__init__(message, code="ADAPTER_404", **kwargs)
 
 
-class DriverNotInstalledError(UnifyDBError):
+class DriverNotInstalledError(OneDBError):
     """Database driver not installed."""
     
     def __init__(self, driver_name: str, install_command: str, **kwargs):
@@ -92,7 +78,7 @@ class DriverNotInstalledError(UnifyDBError):
         super().__init__(message, code="DRIVER_404", details=details, **kwargs)
 
 
-class ValidationError(UnifyDBError):
+class ValidationError(OneDBError):
     """Data validation error."""
     
     def __init__(self, message: str, field: Optional[str] = None, **kwargs):
@@ -100,7 +86,7 @@ class ValidationError(UnifyDBError):
         super().__init__(message, code="VALID_ERR", details=details, **kwargs)
 
 
-class TransactionError(UnifyDBError):
+class TransactionError(OneDBError):
     """Transaction error."""
     
     def __init__(self, message: str, **kwargs):
