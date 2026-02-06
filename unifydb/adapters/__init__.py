@@ -3,9 +3,6 @@ Database adapters for UnifyDB.
 Each adapter provides consistent interface for specific database.
 """
 
-from typing import TYPE_CHECKING
-
-# Lazy imports
 __all__ = [
     "Oracle",
     "MySQL",
